@@ -1,0 +1,4 @@
+html { scroll-behavior: smooth; }
+body { margin: 0; }
+main { min-height: 70vh; }
+a { text-decoration: none; }

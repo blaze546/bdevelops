@@ -1,0 +1,171 @@
+import React, { useEffect, useRef } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "../pages/home.css"; // uses your tokens + base classes
+import "../pages/work.css"; // add the CSS below
+
+export default function Work() {
+  const revealRefs = useRef([]);
+
+  useEffect(() => {
+    const els = revealRefs.current.filter(Boolean);
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => e.isIntersecting && e.target.classList.add("in-view")),
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const featured = [
+    {
+      name: "BeeSixPaints",
+      type: "Shopify Store",
+      desc:
+        "Shopify storefront for BeeSixPaints — product-focused layout, clean navigation, and a brand-first feel built for conversions.",
+      bullets: ["Shopify", "Branding", "Product pages", "Mobile-first"],
+      url: "https://beesixpaints.com", // replace if different
+      noteTitle: "Founder note",
+      note:
+        "I built this as my own store, so I could iterate quickly, test layouts, and optimize for real customer behavior. It’s a perfect example of how I approach design + function together.",
+    },
+    {
+      name: "Emanny Services",
+      type: "Service Business Website",
+      desc:
+        "Website for a carpentry/handyman business — designed to build trust fast and generate leads with clear calls-to-action and project highlights.",
+      bullets: ["Lead gen", "Portfolio", "Local business", "Responsive"],
+      url: "https://emannyservices.com", // replace
+      noteTitle: "What I optimized for",
+      note:
+        "Clarity, credibility, and speed. The goal is simple: show work, explain services, and make it easy to contact.",
+    },
+  ];
+
+  const templates = [
+    { name: "Therapist Starter Layout", desc: "Warm, calming layout designed for trust + easy booking." },
+    { name: "Braider Starter Layout", desc: "Service menu, gallery, booking CTA, and local discovery-ready structure." },
+    { name: "Consultant Starter Layout", desc: "Authority-driven homepage + services + testimonials + contact flow." },
+    { name: "Nonprofit Starter Layout", desc: "Mission-first narrative with donation + volunteer CTAs." },
+  ];
+
+  return (
+    <>
+      {/* PAGE INTRO */}
+      <section className="neo-section">
+        <Container>
+          <div className="neo-card reveal" ref={(el) => (revealRefs.current[0] = el)}>
+            <div className="heroEyebrow">Work</div>
+            <h1 className="heroTitle">Selected Websites & Builds</h1>
+            <p className="heroLede">
+              A few projects that show range — e-commerce, service businesses, and clean marketing sites.
+              Want something similar? I’ll help you pick the right direction fast.
+            </p>
+
+            <div className="ctaRow">
+              <a className="neo-btn btnFX" href="/contact">Start a Project</a>
+              <a className="neo-btn secondary btnFX" href="/services">View Services</a>
+              <a className="neo-btn secondary btnFX" href="/pricing">Billing Options</a>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* FEATURED WORK */}
+      <section className="neo-section pt-0">
+        <Container>
+          <Row className="g-4">
+            {featured.map((p, i) => (
+              <Col lg={6} key={p.name}>
+                <div className="neo-card reveal workCard" ref={(el) => (revealRefs.current[1 + i] = el)}>
+                  {/* Screenshot placeholder (you can swap to images later) */}
+                  <div className="workShot">
+                    <div className="shotLabel">{p.type}</div>
+                    <div className="shotHint">Screenshot goes here</div>
+                  </div>
+
+                  <div className="workTop">
+                    <h2 className="workTitle">{p.name}</h2>
+                    <a className="workLink" href={p.url} target="_blank" rel="noreferrer">
+                      Visit site <span aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+
+                  <p className="workDesc">{p.desc}</p>
+
+                  <div className="projectMeta">
+                    {p.bullets.map((b) => (
+                      <span key={b} className="miniTag">{b}</span>
+                    ))}
+                  </div>
+
+                  <div className="neo-soft workNote">
+                    <div className="softTitle">{p.noteTitle}</div>
+                    <div className="softBody">{p.note}</div>
+                  </div>
+
+                  <div className="workActions">
+                    <a className="neo-btn btnFX" href="/contact">Build something like this</a>
+                    <a className="neo-btn secondary btnFX" href="/work">More work soon</a>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      {/* STARTER LAYOUTS / TEMPLATES */}
+      <section className="neo-section pt-0">
+        <Container>
+          <div className="neo-card reveal" ref={(el) => (revealRefs.current[10] = el)}>
+            <Row className="g-4 align-items-start">
+              <Col lg={5}>
+                <h2 className="sectionH2">Starter Layouts (Optional)</h2>
+                <p className="sectionP">
+                  If you want a faster build, I’m creating a small library of starter layouts.
+                  You can choose one as a base, then we customize colors, sections, and content to fit your brand.
+                </p>
+                <div className="mt-3">
+                  <a className="neo-btn btnFX" href="/contact">Ask about templates</a>
+                </div>
+              </Col>
+
+              <Col lg={7}>
+                <Row className="g-3">
+                  {templates.map((t) => (
+                    <Col md={6} key={t.name}>
+                      <div className="neo-soft templateCard">
+                        <div className="softTitle">{t.name}</div>
+                        <div className="softBody">{t.desc}</div>
+                      </div>
+                    </Col>
+                  ))}
+                </Row>
+
+                <div className="neo-soft mt-3">
+                  <b>Note:</b> Templates are just a starting point — you still get a custom look and a clean build.
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className="neo-section pt-0">
+        <Container>
+          <div className="neo-card reveal" ref={(el) => (revealRefs.current[11] = el)}>
+            <h2 className="sectionH2 text-center">Want your site to look this clean?</h2>
+            <p className="sectionP text-center mx-auto mt-3">
+              If you have an idea (or even just a vibe), I can recommend the best next steps — design, structure, and build.
+            </p>
+            <div className="aboutCtaRow">
+              <a href="/contact" className="neo-btn btnFX">Get in touch</a>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </>
+  );
+}

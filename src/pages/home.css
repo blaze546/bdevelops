@@ -1,0 +1,367 @@
+:root{
+  --bg:#f7f3ea;
+  --ink:#111;
+  --accent:#f3d75b;
+  --border:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--ink);
+  --radius:18px;
+}
+
+.neo-section{ padding: 64px 0; }
+
+.neo-card{
+  background:#fff;
+  border:var(--border);
+  box-shadow:var(--shadow);
+  border-radius:var(--radius);
+  padding: 28px;
+}
+
+.neo-soft{
+  background: var(--bg);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+/* HERO */
+.heroEyebrow{
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: .85rem;
+  opacity: .85;
+}
+
+/* You said the "I help small business..." felt long.
+   This title is shorter + punchier. */
+.heroTitle{
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 12px 0 0;
+}
+
+.heroLede{
+  font-size: 1.05rem;
+  margin-top: 14px;
+  max-width: 62ch;
+}
+
+.chipRow{ margin-top: 14px; }
+
+.neo-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border: var(--border);
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: 999px;
+  font-weight: 800;
+  background: #fff;
+  margin: 6px 8px 0 0;
+  white-space: nowrap;
+}
+
+.ctaRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 18px;
+}
+
+/* Button base */
+.neo-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--accent);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor:pointer;
+  text-decoration:none;
+  position: relative;
+}
+
+.neo-btn.secondary{ background:#fff; }
+
+/* Hover FX */
+.btnFX{
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  will-change: transform;
+}
+.btnFX:hover{
+  transform: translate(2px,2px);
+  box-shadow: 4px 4px 0 var(--ink);
+  filter: brightness(1.02);
+}
+.btnFX:active{
+  transform: translate(4px,4px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* Photo card */
+.headshotWrap{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  text-align:center;
+}
+
+/* You wanted photo next to hero copy on desktop.
+   This is handled by your Bootstrap Cols, but we ensure spacing feels clean. */
+.heroGridGapFix{
+  row-gap: 16px;
+}
+
+.headshot{
+  width: 100%;
+  max-width: 320px;
+  border-radius: 14px;
+  border: var(--border);
+  box-shadow: 4px 4px 0 var(--ink);
+  object-fit: cover;
+}
+
+.headshotMeta{ margin-top: 14px; }
+.brandKicker{
+  font-weight: 950;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+.nameLine{
+  font-weight: 950;
+  font-size: 1.25rem;
+  margin-top: 2px;
+}
+.titleLine{
+  font-weight: 800;
+  opacity: .85;
+  margin-top: 2px;
+}
+
+/* Mobile-only heading ABOVE the photo card (not "over" it) */
+.mobileHeroHeading{
+  display:none;
+  margin-bottom: 10px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+@media (max-width: 991px){
+  .mobileHeroHeading{ display:block; }
+}
+
+/* Sections */
+.sectionH2{
+  font-weight: 950;
+  margin: 0;
+}
+.sectionP{
+  margin-top: 12px;
+  margin-bottom: 0;
+  max-width: 62ch;
+}
+
+/* Reveal animation */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.in-view{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* Process steps */
+.stepsGrid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+@media (max-width: 991px){
+  .stepsGrid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 520px){
+  .stepsGrid{ grid-template-columns: 1fr; }
+}
+
+.stepCard{
+  border: var(--border);
+  box-shadow: 5px 5px 0 var(--ink);
+  border-radius: var(--radius);
+  background:#fff;
+  padding: 18px;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  min-height: 170px;
+}
+.stepCard:hover{
+  transform: translate(2px,2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.stepCard.active{ background: var(--accent); }
+
+.stepTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.stepIcon{
+  width: 44px;
+  height: 44px;
+  display:grid;
+  place-items:center;
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  background:#fff;
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+.stepTitle{
+  font-weight: 950;
+  margin: 0;
+  text-align: right;
+}
+.stepDesc{
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: .96rem;
+}
+
+/* Completed sites (project cards) */
+.projectCard{
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 16px;
+  background:#fff;
+  height: 100%;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.projectCard:hover{
+  transform: translate(2px,2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.shotPlaceholder{
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: var(--border);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--ink);
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.07), rgba(0,0,0,.02));
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  padding: 10px;
+}
+
+.shotLabel{
+  font-weight: 950;
+  font-size: .85rem;
+  padding: 6px 10px;
+  border: var(--border);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  background:#fff;
+}
+
+.projectName{
+  font-weight: 950;
+  margin-top: 14px;
+}
+
+.projectMeta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top: 10px;
+}
+
+.miniTag{
+  font-size:.85rem;
+  font-weight: 900;
+  padding: 8px 12px;
+  border: var(--border);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  background: #fff;
+}
+
+/* Footer icons */
+.neo-footer{ padding-top: 10px; }
+.footerInner{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 12px;
+}
+
+.footerIcons{
+  display:flex;
+  gap: 14px;
+  align-items:center;
+  justify-content:center;
+}
+
+.iconLink{
+  width: 44px;
+  height: 44px;
+  display:grid;
+  place-items:center;
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  background:#fff;
+  color: var(--ink);
+  text-decoration:none;
+  transition: transform .15s ease, box-shadow .15s ease;
+  font-size: 20px;
+}
+
+.iconLink:hover{
+  transform: translate(2px,2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.createdBy{
+  font-weight: 850;
+  opacity: .9;
+  text-align:center;
+}
+/* Services cards */
+.softTitle{
+  font-weight: 950;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.softBody{
+  margin-top: 4px;
+  font-size: .95rem;
+  opacity: .95;
+}
+/* Service cards hover polish */
+.neo-soft{
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.neo-soft:hover{
+  transform: translate(2px,2px);
+  box-shadow: 4px 4px 0 var(--ink);
+  background-color: #fffbe6; /* very subtle warmth */
+}

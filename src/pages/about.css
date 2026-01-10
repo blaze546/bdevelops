@@ -1,0 +1,45 @@
+/* Uses your global tokens from home.css/neo.css */
+
+/* Keep lists clean inside neo-soft */
+.aboutList {
+  margin: 0;
+  padding-left: 18px;
+}
+.aboutList li {
+  margin: 8px 0;
+  font-weight: 800;
+}
+
+/* Pillars */
+.aboutPillar .softTitle {
+  font-weight: 950; /* make these pop more */
+}
+.aboutPillar .softBody {
+  margin-top: 6px;
+}
+
+/* CTA row (tight + centered) */
+.aboutCtaRow {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ✅ Build CTA box: same feel as other cards */
+.buildCta .sectionP {
+  max-width: 64ch;
+}
+
+/* Optional: keep the CTA card from feeling taller than the others */
+.buildCta {
+  padding: 24px; /* slightly tighter than default 28px */
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+  .aboutList {
+    padding-left: 16px;
+  }
+}

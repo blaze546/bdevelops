@@ -1,0 +1,81 @@
+/* Contact page additions — relies on your tokens + shared classes from home.css */
+
+.contactQuickRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.contactForm .hidden {
+  display: none;
+}
+
+.formLabel {
+  display: block;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  border: var(--border);
+  border-radius: 12px;
+  padding: 12px 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  outline: none;
+  font-weight: 700;
+  background: #fff;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.formStatus {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  background: #fff;
+  font-weight: 900;
+}
+
+.formStatus.sent {
+  background: var(--accent);
+}
+
+.contactLinkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactLink {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--ink);
+  background: #fff;
+  font-weight: 900;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contactLink:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
