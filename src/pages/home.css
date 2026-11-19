@@ -365,3 +365,156 @@
   box-shadow: 4px 4px 0 var(--ink);
   background-color: #fffbe6; /* very subtle warmth */
 }
+
+/* SELECTED WORK */
+
+.workCard {
+  height: 100%;
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 #111;
+  overflow: hidden;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.workCard:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #111;
+}
+
+/* Project screenshots */
+
+.workPreview {
+  position: relative;
+  background: #f4f1e8;
+  padding: 24px 36px 30px 20px;
+  border-bottom: 3px solid #111;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.desktopShot {
+  display: block;
+  width: 88%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border: 3px solid #111;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 #111;
+}
+
+.mobileShot {
+  position: absolute;
+  width: 24%;
+  right: 5%;
+  bottom: 5%;
+  aspect-ratio: 390 / 844;
+  object-fit: cover;
+  object-position: top;
+  border: 3px solid #111;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #111;
+}
+
+/* Project information */
+
+.workContent {
+  padding: 24px;
+}
+
+.workName {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 8px 0;
+}
+
+.workCategory {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.workDescription {
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.workMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.featuredLabel {
+  display: inline-block;
+  background: #ffda44;
+  color: #111;
+  border: 2px solid #111;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* Featured project */
+
+.featuredWork .workName {
+  font-size: 2.2rem;
+}
+
+.featuredWork .workPreview {
+  aspect-ratio: 16 / 9;
+}
+
+.featuredWork .desktopShot {
+  aspect-ratio: 16 / 9;
+}
+
+.featuredWork .mobileShot {
+  width: 21%;
+}
+
+/* Mobile */
+
+@media (max-width: 767.98px) {
+  .workPreview {
+    padding: 14px 24px 20px 14px;
+  }
+
+  .workContent {
+    padding: 18px;
+  }
+
+  .workName {
+    font-size: 1.4rem;
+  }
+
+  .featuredWork .workName {
+    font-size: 1.8rem;
+  }
+
+  .mobileShot {
+    border-width: 2px;
+    border-radius: 8px;
+  }
+
+  .desktopShot {
+    border-width: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workCard {
+    transition: none;
+  }
+
+  .workCard:hover {
+    transform: none;
+  }
+}

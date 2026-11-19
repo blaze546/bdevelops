@@ -4,6 +4,14 @@ import { Link } from "react-router-dom";
 import "../pages/home.css";
 
 import headshot from "../assets/headshot.jpg";
+import beesixDesktop from "../assets/projects/beesix-desktop.png";
+import beesixMobile from "../assets/projects/beesix-mobile.png";
+
+import utcDesktop from "../assets/projects/utc-desktop.png";
+import utcMobile from "../assets/projects/utc-mobile.png";
+
+import tactocDesktop from "../assets/projects/tactoc-desktop.png";
+import tactocMobile from "../assets/projects/tactoc-mobile.png";
 
 export default function Home() {
   const revealRefs = useRef([]);
@@ -36,15 +44,40 @@ export default function Home() {
   );
 
   // Completed sites: placeholders for now
-  const completed = useMemo(
-    () => [
-      { name: "UTC Nursing School", tags: ["Web", "UI"], img: "" },
-      { name: "Tactoc Consulting", tags: ["Brand", "Site"], img: "" },
-      { name: "Author Page", tags: ["Landing", "SEO"], img: "" },
-      { name: "Pokedex", tags: ["React", "API"], img: "" },
-    ],
-    []
-  );
+  
+const completed = useMemo(
+  () => [
+    {
+      name: "BeeSixPaints",
+      featured: true,
+      category: "E-Commerce & Creative Direction",
+      desc: "A custom Shopify storefront designed to showcase original artwork through an immersive, visually driven shopping experience.",
+      tags: ["Shopify", "Liquid", "E-Commerce", "UI/UX"],
+      desktop: beesixDesktop,
+      mobile: beesixMobile,
+    },
+    {
+      name: "UTC Nursing School",
+      featured: false,
+      category: "Education & Web Development",
+      desc: "A responsive educational website focused on accessibility, program discovery, and the student enrollment experience.",
+      tags: ["WordPress", "Responsive Design", "UI/UX"],
+      desktop: utcDesktop,
+      mobile: utcMobile,
+    },
+    {
+      name: "Tactoc Consulting",
+      featured: false,
+      category: "Business & Branding",
+      desc: "A professional consulting website designed to establish credibility, communicate services, and generate client inquiries.",
+      tags: ["Web Development", "Branding", "SEO"],
+      desktop: tactocDesktop,
+      mobile: tactocMobile,
+    },
+  ],
+  []
+);
+
 
   useEffect(() => {
     const els = revealRefs.current.filter(Boolean);
@@ -186,49 +219,93 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* COMPLETED SITES (ABOVE PROCESS) */}
-      <section className="neo-section">
-        <Container>
-          <div className="neo-card reveal" ref={(el) => (revealRefs.current[3] = el)}>
-            <Row className="align-items-end g-3">
-              <Col lg={7}>
-                <h2 className="sectionH2">Completed Sites</h2>
-                <p className="sectionP mb-0">
-                  A few builds — screenshots coming in next. For now these are placeholders you can wire up quickly.
-                </p>
-              </Col>
-              <Col lg={5} className="text-lg-end">
-                <Link className="neo-btn secondary btnFX" to="/work">
-                  View Full Portfolio
-                </Link>
-              </Col>
-            </Row>
+      
+{/* SELECTED WORK */}
+<section className="neo-section">
+  <Container>
+    <div
+      className="neo-card reveal"
+      ref={(el) => (revealRefs.current[3] = el)}
+    >
+      <Row className="align-items-end g-3">
+        <Col lg={7}>
+          <h2 className="sectionH2">Selected Work.</h2>
+          <p className="sectionP mb-0">
+            A selection of real-world projects combining clean
+            design, responsive development, and business strategy.
+          </p>
+        </Col>
 
-            <Row className="g-3 mt-3">
-              {completed.map((p) => (
-                <Col key={p.name} md={6} lg={3}>
-                  <div className="workCard">
-                    <div className="workShot" aria-hidden="true">
-                      {/* Placeholder: replace this div with <img src={...}/> later */}
-                      <div className="workShotInner">Screenshot</div>
-                    </div>
+        <Col lg={5} className="text-lg-end">
+          <Link
+            className="neo-btn secondary btnFX"
+            to="/work"
+          >
+            View Full Portfolio
+          </Link>
+        </Col>
+      </Row>
 
-                    <div className="workName">{p.name}</div>
+      <Row className="g-4 mt-3">
+        {completed.map((p) => (
+          <Col
+            key={p.name}
+            xs={12}
+            lg={p.featured ? 12 : 6}
+          >
+            <article
+              className={`workCard ${
+                p.featured ? "featuredWork" : ""
+              }`}
+            >
+              <div className="workPreview">
+                <img
+                  src={p.desktop}
+                  alt={`${p.name} desktop website`}
+                  className="desktopShot"
+                  loading="lazy"
+                />
 
-                    <div className="workMeta">
-                      {p.tags.map((t) => (
-                        <span className="miniTag" key={t}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        </Container>
-      </section>
+                <img
+                  src={p.mobile}
+                  alt={`${p.name} mobile website`}
+                  className="mobileShot"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="workContent">
+                {p.featured && (
+                  <span className="featuredLabel">
+                    Featured Project
+                  </span>
+                )}
+
+                <div className="workCategory">
+                  {p.category}
+                </div>
+
+                <h3 className="workName">{p.name}</h3>
+
+                <p className="workDescription">{p.desc}</p>
+
+                <div className="workMeta">
+                  {p.tags.map((t) => (
+                    <span className="miniTag" key={t}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </Col>
+        ))}
+      </Row>
+    </div>
+  </Container>
+</section>
+
+              
 
       {/* PROCESS (WITH ICONS + MOTION) */}
       <section className="neo-section">

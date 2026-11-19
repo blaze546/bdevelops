@@ -2,3 +2,16 @@ html { scroll-behavior: smooth; }
 body { margin: 0; }
 main { min-height: 70vh; }
 a { text-decoration: none; }
+.brand-logo {
+  height: auto;
+  width: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 991.98px) {
+  .brand-logo {
+    height: 40px;
+    width: auto;
+  }
+}
