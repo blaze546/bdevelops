@@ -12,36 +12,44 @@ import utcMobile from "../assets/projects/utc-mobile.png";
 
 import tactocDesktop from "../assets/projects/tactoc-desktop.png";
 import tactocMobile from "../assets/projects/tactoc-mobile.png";
+import {
+  MessagesSquare,
+  ClipboardList,
+  CodeXml,
+  Rocket,
+} from "lucide-react";
 
 export default function Home() {
   const revealRefs = useRef([]);
   const [activeStep, setActiveStep] = useState(0);
 
-  const steps = useMemo(
-    () => [
-      {
-        title: "Consultation",
-        icon: "far fa-lightbulb",
-        desc: "Quick call to align on goals, scope, timeline, and budget. No pressure — just clarity.",
-      },
-      {
-        title: "Plan + Proposal",
-        icon: "far fa-scroll",
-        desc: "You get a clear plan: deliverables, timeline, and billing options that fit your project.",
-      },
-      {
-        title: "Build + Updates",
-        icon: "far fa-code",
-        desc: "I build the site and share progress regularly. Clean UI, fast performance, mobile-first.",
-      },
-      {
-        title: "Launch + Support",
-        icon: "fas fa-rocket",
-        desc: "We deploy, test, and polish. Optional maintenance so your site stays sharp.",
-      },
-    ],
-    []
-  );
+  
+const steps = useMemo(
+  () => [
+    {
+      title: "Consultation",
+      icon: MessagesSquare,
+      desc: "Quick call to align on goals, scope, timeline, and budget. No pressure — just clarity.",
+    },
+    {
+      title: "Plan + Proposal",
+      icon: ClipboardList,
+      desc: "You get a clear plan: deliverables, timeline, and billing options that fit your project.",
+    },
+    {
+      title: "Build + Updates",
+      icon: CodeXml,
+      desc: "I build the site and share progress regularly. Clean UI, fast performance, mobile-first.",
+    },
+    {
+      title: "Launch + Support",
+      icon: Rocket,
+      desc: "We deploy, test, and polish. Optional maintenance so your site stays sharp.",
+    },
+  ],
+  []
+);
+
 
   // Completed sites: placeholders for now
   
@@ -307,59 +315,82 @@ const completed = useMemo(
 
               
 
-      {/* PROCESS (WITH ICONS + MOTION) */}
-      <section className="neo-section">
-        <Container>
-          <div className="neo-card reveal" ref={(el) => (revealRefs.current[4] = el)}>
-            <Row className="align-items-end g-3">
-              <Col lg={7}>
-                <h2 className="sectionH2">A simple process — with momentum.</h2>
-                <p className="sectionP">
-                  No confusing handoffs. You’ll always know what’s happening, what’s next,
-                  and how we’re tracking progress.
-                </p>
-              </Col>
-              <Col lg={5} className="text-lg-end">
-                <Link className="neo-btn btnFX" to="/contact">
-                  Send Inquiry
-                </Link>
-              </Col>
-            </Row>
+      
+{/* PROCESS */}
+<section className="neo-section">
+  <Container>
+    <div
+      className="neo-card reveal"
+      ref={(el) => (revealRefs.current[4] = el)}
+    >
+      <Row className="align-items-end g-3">
+        <Col lg={7}>
+          <h2 className="sectionH2">
+            A simple process — with momentum.
+          </h2>
 
-            <div className="stepsGrid">
-              {steps.map((s, idx) => (
-                <div
-                  key={s.title}
-                  className={`stepCard reveal ${activeStep === idx ? "active" : ""}`}
-                  ref={(el) => (revealRefs.current[10 + idx] = el)}
-                >
-                  <div className="stepTop">
-                    <div className="stepIcon" aria-hidden="true">
-                      <i className={s.icon} />
-                    </div>
-                    <p className="stepTitle">
-                      {idx + 1}. {s.title}
-                    </p>
-                  </div>
-                  <p className="stepDesc">{s.desc}</p>
+          <p className="sectionP">
+            No confusing handoffs. You’ll always know
+            what’s happening, what’s next, and how
+            we’re tracking progress.
+          </p>
+        </Col>
+
+        <Col lg={5} className="text-lg-end">
+          <Link className="neo-btn btnFX" to="/contact">
+            Send Inquiry
+          </Link>
+        </Col>
+      </Row>
+
+      <div className="stepsGrid">
+        {steps.map((s, idx) => {
+          const Icon = s.icon;
+
+          return (
+            <div
+              key={s.title}
+              className={`stepCard ${
+                activeStep === idx ? "active" : ""
+              }`}
+            >
+              <div className="stepTop">
+                <div className="stepIcon" aria-hidden="true">
+                  <Icon size={28} strokeWidth={2} />
                 </div>
-              ))}
-            </div>
 
-            <div className="neo-soft mt-4">
-              <b>Billing flexibility:</b> No surprises. Milestones, Flat Rates, or Maintenance — Structured Around Your Project Needs.
-              <div className="mt-2">
-                <Link className="neo-btn secondary btnFX" to="/pricing">
-                  View Pricing & Billing
-                </Link>
+                <p className="stepTitle">
+                  {idx + 1}. {s.title}
+                </p>
               </div>
+
+              <p className="stepDesc">{s.desc}</p>
             </div>
-          </div>
-        </Container>
-      </section>
-    </>
-  );
+          );
+        })}
+      </div>
+
+      <div className="neo-soft mt-4">
+        <b>Billing flexibility:</b> No surprises.
+        Milestones, flat rates, or maintenance —
+        structured around your project needs.
+
+        <div className="mt-2">
+          <Link
+            className="neo-btn secondary btnFX"
+            to="/pricing"
+          >
+            View Pricing & Billing
+          </Link>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+</>
+);
 }
+
 
 
 
